@@ -1,0 +1,25 @@
+---
+schema: spec-driven
+context: |
+  Project: Portal da Liturgia (portaldaliturgia.com)
+  Client: Maciel José da Silva (Pe. Maciel)
+  Repo: JonesGit4/portal-da-liturgia
+  Current stack: React CRA (HostGator) + Vercel API backend + Cloudflare DNS
+  Target stack: Next.js + Tailwind + Vercel (new design ZIP exists)
+  DB target: PostgreSQL (Supabase) for structured content storage
+  API backend (legacy): portal-da-liturgia-back.vercel.app
+    - GET /get-musicas (491 items)
+    - GET /get-all-artigos (38 items)
+    - GET /get-oracoes (271 items)
+    - GET /get-missas (events)
+    - GET /get-subsidios (210 items)
+    - GET /get-tipos-oracoes (31 categories)
+rules:
+  proposal:
+    - Include rollback plan
+    - Identify affected systems
+  specs:
+    - Use Given/When/Then format for scenarios
+  design:
+    - Include data model schema
+    - Include API contracts
