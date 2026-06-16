@@ -43,9 +43,9 @@ services:
       DB_PORT: 5432
       DB_DATABASE: portal_da_liturgia
       DB_USER: postgres
-      DB_PASSWORD: Mfcd62!!Mfcd62!!
+      DB_PASSWORD: ${DB_PASSWORD}
       ADMIN_EMAIL: jones@duobro.com.br
-      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       PUBLIC_URL: https://admin.portaldaliturgia.com.br
       CORS_ENABLED: true
       CORS_ORIGINS: https://portaldaliturgia.com.br,https://portal-da-liturgia-*.vercel.app
@@ -72,9 +72,33 @@ services:
 
 | Role | Permissões |
 |------|-----------|
-| **Admin** | Tudo (Jones) |
-| **Editor** | CRUD em: musicas, oracoes, artigos, eventos, subsidios. Read em lookup tables |
+| **Admin** | Tudo — Jones + Maciel (2 usuários) |
+| **Editor 01** | CRUD em conteúdo: musicas, oracoes, artigos, eventos, subsidios. Genérico para colaboradores futuros |
+| **Autor 01** | Criar/editar próprio conteúdo (rascunho), sem publicar. Genérico |
 | **Public** | Read em todas as collections |
+
+## Segurança
+
+- **Senhas NUNCA no código-fonte.** Usar Docker secrets ou variáveis de ambiente no stack.
+- `DB_PASSWORD` via `$DB_PASSWORD` injetado no deploy, nunca hardcoded.
+- Porta do PostgreSQL (`5432`) exposta apenas na rede interna `network_public` — sem bind ao host.
+- CORS restrito aos domínios do projeto + previews da Vercel.
+- Rate-limit na API pública para evitar scraping abusivo.
+
+## Infra portátil (migração futura)
+
+Stack projetada para o cliente migrar para infra própria:
+- Docker Compose standalone (não depende do Swarm DuoBro)
+- PostgreSQL externo (conexão via `DB_HOST` configurável)
+- Volume para uploads mapeado em path relativo
+- Documentação de migração: export dump PG + copiar volume + `docker compose up`
+
+## Mídias do site legado (.com)
+
+As imagens atuais vieram do Pexels como placeholder. O cliente possui mídias originais no site `portaldaliturgia.com`:
+- Extrair imagens do site legado (scraper ou acesso ao servidor HostGator)
+- Mapear para as collections do Directus (campo `imagem` em artigos, músicas, etc.)
+- Upload via API Directus ou import direto no volume
 
 ## Integração Next.js
 

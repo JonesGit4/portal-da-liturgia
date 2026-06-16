@@ -17,32 +17,46 @@
 
 ## Fase 3: Roles
 
-- [ ] 3.1 Criar role "Editor"
-- [ ] 3.2 Configurar permissões CRUD nas collections de conteúdo
-- [ ] 3.3 Bloquear acesso a system collections e schema
-- [ ] 3.4 Criar usuário para Pe. Maciel (email + senha)
-- [ ] 3.5 Testar login e permissões do Editor
+- [ ] 3.1 Criar role "Editor 01" (genérico)
+- [ ] 3.2 Criar role "Autor 01" (genérico)
+- [ ] 3.3 Configurar permissões CRUD nas collections de conteúdo
+- [ ] 3.4 Bloquear acesso a system collections e schema para não-admins
+- [ ] 3.5 Criar usuário Admin para Maciel
+- [ ] 3.6 Testar login e permissões de cada role
 
-## Fase 4: Next.js
+## Fase 4: Segurança
 
-- [ ] 4.1 Criar `lib/directus.ts` com helper de fetch
-- [ ] 4.2 Atualizar `Musica.tsx` — fetch músicas da API
-- [ ] 4.3 Atualizar `Oracoes.tsx` — fetch orações da API
-- [ ] 4.4 Atualizar `Artigos.tsx` — fetch artigos da API
-- [ ] 4.5 Atualizar `Liturgia.tsx` — fetch evento do dia
-- [ ] 4.6 Atualizar `Subsidios.tsx` — fetch subsídios da API
-- [ ] 4.7 Adicionar `loading.tsx` (skeleton enquanto carrega)
+- [ ] 4.1 Substituir senhas hardcoded por Docker secrets
+- [ ] 4.2 Confirmar que porta PG não está exposta ao host
+- [ ] 4.3 Configurar CORS restrito
+- [ ] 4.4 Testar rate-limit na API pública
 
-## Fase 5: ISR
+## Fase 5: Next.js
 
-- [ ] 5.1 Criar `app/api/revalidate/route.ts` (webhook endpoint)
-- [ ] 5.2 Configurar webhook no Directus → Vercel Deploy Hook
-- [ ] 5.3 Testar: editar artigo no Directus → ver rebuild no Vercel
-- [ ] 5.4 Adicionar `revalidate` nas páginas dinâmicas
+- [ ] 5.1 Criar `lib/directus.ts` com helper de fetch
+- [ ] 5.2 Atualizar `Musica.tsx` — fetch músicas da API
+- [ ] 5.3 Atualizar `Oracoes.tsx` — fetch orações da API
+- [ ] 5.4 Atualizar `Artigos.tsx` — fetch artigos da API
+- [ ] 5.5 Atualizar `Liturgia.tsx` — fetch evento do dia
+- [ ] 5.6 Atualizar `Subsidios.tsx` — fetch subsídios da API
+- [ ] 5.7 Adicionar `loading.tsx` (skeleton enquanto carrega)
 
-## Fase 6: Verificação
+## Fase 6: ISR
 
-- [ ] 6.1 Teste end-to-end: criar artigo no Directus → aparece no site
-- [ ] 6.2 Verificar performance (Lighthouse pós-integração)
-- [ ] 6.3 Verificar SEO (meta tags nos dados dinâmicos)
-- [ ] 6.4 Backup do PostgreSQL antes de liberar acesso ao cliente
+- [ ] 6.1 Criar `app/api/revalidate/route.ts` (webhook endpoint)
+- [ ] 6.2 Configurar webhook no Directus → Vercel Deploy Hook
+- [ ] 6.3 Testar: editar artigo no Directus → ver rebuild no Vercel
+- [ ] 6.4 Adicionar `revalidate` nas páginas dinâmicas
+
+## Fase 7: Mídias do legado
+
+- [ ] 7.1 Extrair imagens do site portaldaliturgia.com
+- [ ] 7.2 Mapear imagens para collections do Directus
+- [ ] 7.3 Upload via API Directus ou import direto
+
+## Fase 8: Verificação
+
+- [ ] 8.1 Teste end-to-end: criar artigo no Directus → aparece no site
+- [ ] 8.2 Verificar performance (Lighthouse pós-integração)
+- [ ] 8.3 Verificar SEO (meta tags nos dados dinâmicos)
+- [ ] 8.4 Backup do PostgreSQL antes de liberar acesso ao cliente

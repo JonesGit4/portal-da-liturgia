@@ -13,17 +13,18 @@ Directus admin deve estar disponível em URL separada com login.
 - **Then** página de login do Directus é exibida
 - **And** login aceita email + senha
 
-### REQ-002: Role Editor para o cliente
-Pe. Maciel deve ter acesso de Editor com permissões limitadas.
+### REQ-002: Admin para Jones + Maciel, papéis genéricos
+O painel deve ter Admin compartilhado e papéis reutilizáveis.
 
 **Priority:** P0
 
 **Scenarios:**
-- **Given** role "Editor" configurada no Directus
-- **When** Pe. Maciel faz login
-- **Then** vê apenas collections de conteúdo (músicas, orações, artigos, subsídios, eventos)
-- **And** pode criar, editar e publicar itens
-- **And** NÃO pode deletar collections, alterar schema, ou gerenciar usuários
+- **Given** 2 usuários Admin (Jones + Maciel)
+- **When** qualquer Admin faz login
+- **Then** acesso total a collections, schema, roles e settings
+- **And** role "Editor 01" pode CRUD em conteúdo, sem acesso a schema
+- **And** role "Autor 01" pode criar/editar próprio rascunho, sem publicar
+- **And** ambos os papéis são genéricos (podem ser atribuídos a colaboradores futuros)
 
 ### REQ-003: Interface em português
 **Priority:** P1
