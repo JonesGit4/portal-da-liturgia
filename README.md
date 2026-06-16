@@ -16,7 +16,9 @@
 | Repo GitHub | [JonesGit4/portal-da-liturgia](https://github.com/JonesGit4/portal-da-liturgia) |
 | Vercel Project | `prj_OWHejbRQ866fJwKfssXUdLoiNk0I` (joneslab-projects) |
 | Cloudflare Zone | `2a80dceb1288acb3962069c1b6b1a7d6` |
-| PostgreSQL | manager1, DB `portal_da_liturgia` (1.527 registros) |
+|| PostgreSQL | manager1, DB `portal_da_liturgia` (1.527 registros) |
+|| Directus CMS | `admin.portaldaliturgia.com.br` (HTTPS, Swarm) |
+|| Guia Editor | [docs/guia-editor-maciel.pdf](docs/guia-editor-maciel.pdf) |
 
 ---
 
@@ -56,12 +58,37 @@
 
 ## 🔜 Pendências
 
-- [ ] Substituir 8 placeholders por imagens reais (Pexels)
-- [ ] Aguardar propagação DNS Cloudflare (~1-24h)
-- [ ] Lighthouse audit pós-imagens
-- [ ] Criar ~15 issues de staging (SEO, performance, a11y)
-- [ ] Confirmar métricas YouTube com cliente
+- [x] Integrar Directus CMS (painel admin + API REST)
+- [x] Configurar fluxo editorial (Autor draft → Editor publica → Public lê)
+- [x] Editor Rich Text (WYSIWYG) nas 4 collections principais
+- [x] Documentar padrão Directus DuoBro (`docs/padrao-directus-duobro.md`)
+- [ ] Criar usuário Pe. Maciel no Directus (aguardando email)
+- [ ] Migrar áudios legado (aguardando acesso servidor)
+- [ ] Lighthouse audit final
+- [ ] Deploy produção (`vercel --prod`)
 - [ ] Aprovação do cliente para go-live
+
+---
+
+## 🖊️ Editor (Directus CMS)
+
+**Painel:** `admin.portaldaliturgia.com.br`
+
+| Role | Acesso | O que faz |
+|------|--------|-----------|
+| **Editor 01** (Pe. Maciel) | App completo | CRUD total, publica conteúdo |
+| **Autor 01** | App restrito | Cria rascunhos, edita só os próprios |
+| **Public** | Site apenas | Lê conteúdo publicado |
+
+**Fluxo:** Autor cria rascunho → Editor revisa → muda status para "Publicado" → visível no site.
+
+**Rich Text:** Editor WYSIWYG com toolbar completa (bold, headings, imagens, links) em:
+- `artigos.conteudo`
+- `musicas.letra`
+- `oracoes.texto`
+- `subsidios.descricao`
+
+**Docs:** [Guia do Editor (PDF)](docs/guia-editor-maciel.pdf) · [Padrão Directus DuoBro](docs/padrao-directus-duobro.md)
 
 ---
 
