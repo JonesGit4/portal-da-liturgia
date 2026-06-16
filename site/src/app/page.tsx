@@ -65,7 +65,7 @@ export default function Home() {
       </header>
 
       {/* === HERO === */}
-      <section className="pt-[70px] pb-20 relative overflow-hidden" id="top">
+      <section className="pt-[70px] pb-20 relative overflow-hidden" id="top" data-od-id="hero">
         <div className="wrap grid grid-cols-[1.05fr_0.95fr] gap-[clamp(40px,6vw,90px)] items-center max-[980px]:grid-cols-1 max-[980px]:gap-[50px]">
           <div>
             <div className="inline-flex items-center gap-[10px] mb-8">
@@ -88,7 +88,7 @@ export default function Home() {
           </div>
 
           <div className="relative aspect-[4/5] rounded">
-            <div className="ph w-full h-full rounded" data-label="ELEVAÇÃO • foto principal" />
+            <div className="ph w-full h-full rounded" data-label="ELEVAÇÃO • foto principal" role="img" aria-label="Imagem de elevação da hóstia durante a Santa Missa" />
             <div className="absolute -left-7 -bottom-7 bg-[var(--bg)] border border-[var(--line)] rounded p-[22px] w-[260px] shadow-[0_18px_40px_-20px_rgba(45,42,38,0.18)]">
               <div className="absolute left-[18px] right-[18px] top-[10px] h-[6px] bg-[radial-gradient(circle,var(--accent)_1.4px,transparent_1.8px)] bg-[size:12px_6px] bg-repeat-x" />
               <div className="text-[10px] tracking-[0.18em] uppercase text-[var(--ink-3)] mb-[6px] mt-3">Próxima solenidade</div>
@@ -102,7 +102,7 @@ export default function Home() {
       <hr className="dot-rule" />
 
       {/* === MÚSICA LITÚRGICA === */}
-      <section id="musica">
+      <section id="musica" data-od-id="musica">
         <div className="wrap">
           <div className="flex items-end justify-between gap-10 mb-14">
             <div className="max-w-[640px]">
@@ -119,7 +119,7 @@ export default function Home() {
 
           <div className="grid grid-cols-4 gap-5 max-[980px]:grid-cols-2">
             <div className="col-span-2 row-span-2 max-[980px]:col-span-2">
-              <div className="ph aspect-[4/5] rounded mb-4" data-label="CRUCIFICAÇÃO • obra-prima" />
+              <div className="ph aspect-[4/5] rounded mb-4" data-label="CRUCIFICAÇÃO • obra-prima" role="img" aria-label="CRUCIFICAÇÃO • obra-prima" />
               <span className="text-[10.5px] tracking-[0.16em] uppercase text-[var(--accent)] font-semibold mb-[6px] block">Canto Gregoriano</span>
               <h3 className="text-[32px] leading-[1.15] tracking-[-0.01em]" style={{ fontFamily: 'var(--serif)' }}>O canto próprio da liturgia romana</h3>
               <p className="text-[var(--ink-2)] text-sm mt-2 line-clamp-2">Repertório completo organizado por tempo litúrgico, com partituras e gravações.</p>
@@ -130,7 +130,7 @@ export default function Home() {
               { cat: 'Polifonia', ttl: 'Polifonia sacra', desc: 'Palestrina, Vitória, Lassus.' },
             ].map(card => (
               <div key={card.ttl}>
-                <div className="ph aspect-[4/5] rounded mb-4" data-label={card.ttl.includes('Salmodia') ? 'CORO' : 'MANUSCRITO'} />
+                <div className="ph aspect-[4/5] rounded mb-4" data-label={card.ttl.includes('Salmodia') ? 'CORO' : 'MANUSCRITO'} role="img" aria-label={card.ttl.includes('Salmodia') ? 'Coro litúrgico' : 'Manuscrito musical'} />
                 <span className="text-[10.5px] tracking-[0.16em] uppercase text-[var(--accent)] font-semibold mb-[6px] block">{card.cat}</span>
                 <h3 className="text-[22px] leading-[1.15] tracking-[-0.01em]" style={{ fontFamily: 'var(--serif)' }}>{card.ttl}</h3>
                 <p className="text-[var(--ink-2)] text-sm mt-2 line-clamp-2">{card.desc}</p>
@@ -150,7 +150,7 @@ export default function Home() {
       <hr className="dot-rule" />
 
       {/* === ORAÇÕES === */}
-      <section id="oracoes">
+      <section id="oracoes" data-od-id="oracoes">
         <div className="wrap grid grid-cols-[1.1fr_1fr] gap-20 items-start max-[980px]:grid-cols-1 max-[980px]:gap-[50px]">
           <div className="sticky top-[100px] pr-5 max-[980px]:static">
             <span className="eyebrow">02 — Oratio</span>
@@ -173,7 +173,7 @@ export default function Home() {
               { n: 'VII', ttl: 'Terços', sub: 'Mistérios marianos' },
               { n: 'VIII', ttl: 'Via Sacra', sub: 'Estações da Paixão' },
             ].map((it, i) => (
-              <button key={it.ttl}
+              <button key={it.ttl} aria-label={it.ttl}
                 className={`p-[22px] flex items-center gap-[14px] text-left text-[var(--ink)] transition hover:bg-[var(--bg-2)] border-b border-r border-[var(--line)]
                 ${i % 2 === 0 ? '' : 'border-r-0'}
                 ${i >= 6 ? 'border-b-0' : ''} max-[980px]:border-r-0`}>
@@ -185,7 +185,7 @@ export default function Home() {
                 <span className="text-[var(--ink-3)] opacity-0 group-hover:opacity-100 transition flex-shrink-0"><ArrowRight /></span>
               </button>
             ))}
-            <button className="col-span-2 bg-[var(--ink)] text-[var(--bg)] p-[22px] flex items-center gap-[14px] text-left hover:bg-[var(--accent)] transition max-[980px]:col-span-1">
+            <button className="col-span-2 bg-[var(--ink)] text-[var(--bg)] p-[22px] flex items-center gap-[14px] text-left hover:bg-[var(--accent)] transition max-[980px]:col-span-1" aria-label="Ver todas as orações">
               <span className="font-[var(--serif)] italic text-[17px] w-[22px] flex-shrink-0" style={{ color: 'oklch(0.985 0.005 60 / 0.7)' }}>∞</span>
               <span className="flex-1 min-w-0">
                 <b className="font-medium text-[15px] block">Todas as orações</b>
@@ -200,7 +200,7 @@ export default function Home() {
       <hr className="dot-rule" />
 
       {/* === LITURGIA DIÁRIA === */}
-      <section id="liturgia" className="bg-[var(--bg-2)]">
+      <section id="liturgia" data-od-id="liturgia" className="bg-[var(--bg-2)]">
         <div className="wrap">
           <div className="flex items-end justify-between gap-10 mb-14">
             <div className="max-w-[640px]">
@@ -215,7 +215,7 @@ export default function Home() {
 
           <div className="grid grid-cols-[1.2fr_1fr] gap-20 items-start max-[980px]:grid-cols-1 max-[980px]:gap-[50px]">
             <article className="bg-[var(--bg)] border border-[var(--line)] rounded overflow-hidden">
-              <div className="ph aspect-[16/10] rounded-none border-0" data-label="MISSAL ABERTO" />
+              <div className="ph aspect-[16/10] rounded-none border-0" data-label="MISSAL ABERTO" role="img" aria-label="MISSAL ABERTO" />
               <div className="p-7 pb-[30px]">
                 <div className="text-[11px] tracking-[0.16em] uppercase text-[var(--ink-3)] mb-[10px]">São Filipe Néri · Memória</div>
                 <h3 className="text-[28px] leading-[1.15] mb-2" style={{ fontFamily: 'var(--serif)' }}>&ldquo;Dai a César o que é de César, e a Deus o que é de Deus&rdquo;</h3>
@@ -265,10 +265,10 @@ export default function Home() {
       <hr className="dot-rule" />
 
       {/* === VÍDEO === */}
-      <section id="video">
+      <section id="video" data-od-id="video">
         <div className="wrap grid grid-cols-2 gap-[60px] items-center max-[980px]:grid-cols-1 max-[980px]:gap-[50px]">
           <div className="relative aspect-[16/10] bg-[#2D2A26] rounded overflow-hidden cursor-pointer">
-            <div className="ph dark w-full h-full" data-label="THUMBNAIL • homilia da semana" />
+            <div className="ph dark w-full h-full" data-label="THUMBNAIL • homilia da semana" role="img" aria-label="THUMBNAIL • homilia da semana" />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[76px] h-[76px] bg-[var(--bg)] rounded-full grid place-items-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.4)] transition-transform hover:scale-105">
               <div className="w-0 h-0 border-l-[18px] border-t-[11px] border-b-[11px] border-l-[var(--accent)] border-t-transparent border-b-transparent ml-[6px]" />
             </div>
@@ -297,7 +297,7 @@ export default function Home() {
       <hr className="dot-rule" />
 
       {/* === SUBSÍDIOS === */}
-      <section id="subsidios" className="bg-[var(--bg-2)]">
+      <section id="subsidios" data-od-id="subsidios" className="bg-[var(--bg-2)]">
         <div className="wrap">
           <div className="text-center max-w-[760px] mx-auto mb-16">
             <span className="eyebrow">04 — Subsidia Liturgica</span>
@@ -314,7 +314,7 @@ export default function Home() {
               { cat: 'Rituais', ttl: 'O Rito do Batismo', desc: 'Acompanhamento e preparação para padrinhos, padres e famílias.', label: 'BATISMO' },
             ].map(it => (
               <article key={it.ttl} className="bg-[var(--bg)] border border-[var(--line)] rounded overflow-hidden cursor-pointer transition-transform hover:-translate-y-[3px] hover:shadow-[0_24px_50px_-28px_rgba(45,42,38,0.2)]">
-                <div className="ph aspect-[4/3] border-0 border-b border-[var(--line)]" data-label={it.label} />
+                <div className="ph aspect-[4/3] border-0 border-b border-[var(--line)]" data-label={it.label} role="img" aria-label={it.label} />
                 <div className="p-[26px] pb-7">
                   <div className="text-[10.5px] tracking-[0.16em] uppercase text-[var(--accent)] font-semibold mb-[10px]">{it.cat}</div>
                   <h3 className="text-[22px] leading-[1.2] mb-2" style={{ fontFamily: 'var(--serif)' }}>{it.ttl}</h3>
@@ -330,7 +330,7 @@ export default function Home() {
       <hr className="dot-rule" />
 
       {/* === ARTIGOS === */}
-      <section id="artigos">
+      <section id="artigos" data-od-id="artigos">
         <div className="wrap">
           <div className="flex items-end justify-between gap-10 mb-14">
             <div className="max-w-[640px]">

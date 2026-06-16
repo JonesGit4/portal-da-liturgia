@@ -106,3 +106,10 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .notice-track { animation: none !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+html { scroll-padding-top: 80px; scroll-behavior: smooth; }
