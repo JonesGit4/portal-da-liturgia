@@ -101,3 +101,8 @@
   }
   .btn-ghost:hover { background: var(--bg-2); border-color: var(--ink-3); }
 }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
