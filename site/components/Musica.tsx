@@ -28,21 +28,21 @@ export default function Musica() {
 
         <div className="music-grid">
           <div className="music-card feat">
-            <img src="/images/musica-crucificacao.jpg" alt="Crucificação de Jesus Cristo" className="card-img" />
+            <img src="/images/musica-crucificacao.webp" alt="Crucificação de Jesus Cristo" className="card-img" />
             <div className="cat">{cards[0].cat}</div>
             <h3>{cards[0].ttl}</h3>
             <p>{cards[0].desc}</p>
           </div>
 
           <div className="music-card">
-            <img src="/images/musica-coro.jpg" alt="Coro litúrgico cantando na igreja" className="card-img" />
+            <img src="/images/musica-coro.webp" alt="Coro litúrgico cantando na igreja" className="card-img" />
             <div className="cat">{cards[1].cat}</div>
             <h3>{cards[1].ttl}</h3>
             <p>{cards[1].desc}</p>
           </div>
 
           <div className="music-card">
-            <img src="/images/musica-manuscrito.jpg" alt="Manuscrito de partitura gregoriana" className="card-img" />
+            <img src="/images/musica-manuscrito.webp" alt="Manuscrito de partitura gregoriana" className="card-img" />
             <div className="cat">{cards[2].cat}</div>
             <h3>{cards[2].ttl}</h3>
             <p>{cards[2].desc}</p>

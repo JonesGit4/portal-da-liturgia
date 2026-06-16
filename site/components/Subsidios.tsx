@@ -22,7 +22,7 @@ export default function Subsidios() {
         <div className="sub-grid">
           {items.map((it) => (
             <article key={it.ttl} className="sub-card">
-              {it.label === "MISSAL ABERTO" ? <img src="/images/subsidios-missal.jpg" alt={it.label} className="sub-img" /> : it.label === "CRUCIFIXO" ? <img src="/images/subsidios-crucifixo.jpg" alt={it.label} className="sub-img" /> : <img src="/images/subsidios-batismo.jpg" alt={it.label} className="sub-img" />}
+              {it.label === "MISSAL ABERTO" ? <img src="/images/subsidios-missal.webp" alt={it.label} className="sub-img" /> : it.label === "CRUCIFIXO" ? <img src="/images/subsidios-crucifixo.webp" alt={it.label} className="sub-img" /> : <img src="/images/subsidios-batismo.webp" alt={it.label} className="sub-img" />}
               <div className="body">
                 <div className="cat">{it.cat}</div>
                 <h3>{it.ttl}</h3>
