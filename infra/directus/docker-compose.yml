@@ -1,0 +1,59 @@
+# Directus 11 — Portal da Liturgia
+# Deploy standalone (não Swarm) para portabilidade futura
+# Conecta ao PostgreSQL existente no container postgres_postgres
+
+services:
+  directus:
+    image: directus/directus:11
+    container_name: portal_directus
+    restart: unless-stopped
+    environment:
+      # Database
+      DB_CLIENT: pg
+      DB_HOST: ${DB_HOST:-postgres_postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_DATABASE: ${DB_DATABASE:-portal_da_liturgia}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+      # Admin inicial
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-jones@duobro.com.br}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+
+      # URLs
+      PUBLIC_URL: ${PUBLIC_URL:-https://admin.portaldaliturgia.com.br}
+
+      # CORS (staging + produção)
+      CORS_ENABLED: "true"
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://portaldaliturgia.com.br,https://portal-da-liturgia-*.vercel.app}
+
+      # Segurança
+      KEY: ${KEY}
+      SECRET: ${SECRET}
+
+      # Locale
+      DEFAULT_LOCALE: pt-BR
+
+      # Storage local (portabilidade)
+      STORAGE_LOCATIONS: local
+      STORAGE_LOCAL_DRIVER: local
+      STORAGE_LOCAL_ROOT: ./uploads
+
+      # Email (futuro)
+      EMAIL_FROM: no-reply@portaldaliturgia.com.br
+
+    ports:
+      - "127.0.0.1:8055:8055"
+    volumes:
+      - directus_uploads:/directus/uploads
+      - directus_extensions:/directus/extensions
+    networks:
+      - network_public
+
+volumes:
+  directus_uploads:
+  directus_extensions:
+
+networks:
+  network_public:
+    external: true

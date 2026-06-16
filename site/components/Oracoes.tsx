@@ -1,17 +1,33 @@
 import { Icon } from "./icons";
+import type { Oracao, TipoOracao } from "@/lib/directus";
 
-const items = [
-  { n: "I", ttl: "Novenas", sub: "32 disponíveis" },
-  { n: "II", ttl: "Diárias", sub: "Manhã, noite e refeições" },
-  { n: "III", ttl: "Ação de Graças", sub: "Pós-comunhão" },
-  { n: "IV", ttl: "Santos", sub: "Por intercessão" },
-  { n: "V", ttl: "Ladainhas", sub: "Tradição litúrgica" },
-  { n: "VI", ttl: "Preparação para a Missa", sub: "Antes do altar" },
-  { n: "VII", ttl: "Terços", sub: "Mistérios marianos" },
-  { n: "VIII", ttl: "Via Sacra", sub: "Estações da Paixão" },
-];
+const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
 
-export default function Oracoes() {
+interface Props {
+  oracoes?: Oracao[];
+  tipos?: TipoOracao[];
+}
+
+export default function Oracoes({ oracoes, tipos }: Props) {
+  const tipoMap = new Map(tipos?.map((t) => [t.id, t.nome]) ?? []);
+  const hasData = oracoes && oracoes.length > 0;
+  const display = hasData
+    ? oracoes.slice(0, 8).map((o) => ({
+        n: roman[oracoes.indexOf(o)] ?? "?",
+        ttl: o.titulo,
+        sub: tipoMap.get(o.tipo_id ?? 0) ?? "Oração",
+      }))
+    : [
+        { n: "I", ttl: "Novenas", sub: "32 disponíveis" },
+        { n: "II", ttl: "Diárias", sub: "Manhã, noite e refeições" },
+        { n: "III", ttl: "Ação de Graças", sub: "Pós-comunhão" },
+        { n: "IV", ttl: "Santos", sub: "Por intercessão" },
+        { n: "V", ttl: "Ladainhas", sub: "Tradição litúrgica" },
+        { n: "VI", ttl: "Preparação para a Missa", sub: "Antes do altar" },
+        { n: "VII", ttl: "Terços", sub: "Mistérios marianos" },
+        { n: "VIII", ttl: "Via Sacra", sub: "Estações da Paixão" },
+      ];
+
   return (
     <section id="oracoes" data-screen-label="Orações">
       <div className="wrap pray-wrap">
@@ -28,7 +44,7 @@ export default function Oracoes() {
         </div>
 
         <div className="pray-list">
-          {items.map((it) => (
+          {display.map((it) => (
             <button key={it.ttl} className="pray-item" aria-label={it.ttl}>
               <span className="num">{it.n}</span>
               <span className="body">

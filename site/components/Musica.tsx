@@ -1,12 +1,34 @@
 import { Icon } from "./icons";
+import type { Musica as MusicaType, Categoria } from "@/lib/directus";
 
-const cards = [
+const fallbackCards = [
   { cat: "Canto Gregoriano", ttl: "O canto próprio da liturgia romana", desc: "Repertório completo organizado por tempo litúrgico, com partituras e gravações." },
   { cat: "Hinos & Salmos", ttl: "Salmodia", desc: "Para vésperas, laudes e ofício." },
   { cat: "Polifonia", ttl: "Polifonia sacra", desc: "Palestrina, Vitória, Lassus." },
 ];
 
-export default function Musica() {
+const fallbackImages = [
+  "/images/musica-crucificacao.webp",
+  "/images/musica-coro.webp",
+  "/images/musica-manuscrito.webp",
+];
+
+interface Props {
+  musicas?: MusicaType[];
+  categorias?: Categoria[];
+}
+
+export default function Musica({ musicas, categorias }: Props) {
+  const catMap = new Map(categorias?.map((c) => [c.id, c.nome]) ?? []);
+  const hasData = musicas && musicas.length > 0;
+  const display = hasData
+    ? musicas.slice(0, 3).map((m) => ({
+        cat: catMap.get(m.categoria_id ?? 0) ?? "Música",
+        ttl: m.titulo,
+        desc: m.letra?.replace(/<[^>]*>/g, "").slice(0, 120) ?? "",
+      }))
+    : fallbackCards;
+
   return (
     <section id="musica" data-screen-label="Música Litúrgica">
       <div className="wrap">
@@ -28,24 +50,24 @@ export default function Musica() {
 
         <div className="music-grid">
           <div className="music-card feat">
-            <img src="/images/musica-crucificacao.webp" alt="Crucificação de Jesus Cristo" className="card-img" />
-            <div className="cat">{cards[0].cat}</div>
-            <h3>{cards[0].ttl}</h3>
-            <p>{cards[0].desc}</p>
+            <img src={fallbackImages[0]} alt="Crucificação de Jesus Cristo" className="card-img" />
+            <div className="cat">{display[0].cat}</div>
+            <h3>{display[0].ttl}</h3>
+            <p>{display[0].desc}</p>
           </div>
 
           <div className="music-card">
-            <img src="/images/musica-coro.webp" alt="Coro litúrgico cantando na igreja" className="card-img" />
-            <div className="cat">{cards[1].cat}</div>
-            <h3>{cards[1].ttl}</h3>
-            <p>{cards[1].desc}</p>
+            <img src={fallbackImages[1]} alt="Coro litúrgico cantando na igreja" className="card-img" />
+            <div className="cat">{display[1].cat}</div>
+            <h3>{display[1].ttl}</h3>
+            <p>{display[1].desc}</p>
           </div>
 
           <div className="music-card">
-            <img src="/images/musica-manuscrito.webp" alt="Manuscrito de partitura gregoriana" className="card-img" />
-            <div className="cat">{cards[2].cat}</div>
-            <h3>{cards[2].ttl}</h3>
-            <p>{cards[2].desc}</p>
+            <img src={fallbackImages[2]} alt="Manuscrito de partitura gregoriana" className="card-img" />
+            <div className="cat">{display[2].cat}</div>
+            <h3>{display[2].ttl}</h3>
+            <p>{display[2].desc}</p>
           </div>
 
           <div className="music-quote">

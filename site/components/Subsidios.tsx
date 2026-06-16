@@ -1,12 +1,33 @@
+import type { Subsidio } from "@/lib/directus";
 import { Icon } from "./icons";
 
-const items = [
-  { cat: "Estudo", ttl: "A Santa Missa explicada", desc: "Guia passo a passo do Ordinário da Missa, com comentários patrísticos.", label: "MISSAL ABERTO" },
-  { cat: "Formação", ttl: "Cristo, sumo sacerdote", desc: "Meditações sobre o sacerdócio comum e ministerial.", label: "CRUCIFIXO" },
-  { cat: "Rituais", ttl: "O Rito do Batismo", desc: "Acompanhamento e preparação para padrinhos, padres e famílias.", label: "BATISMO" },
+const fallbackItems = [
+  { cat: "Estudo", ttl: "A Santa Missa explicada", desc: "Guia passo a passo do Ordinário da Missa, com comentários patrísticos.", img: "/images/subsidios-missal.webp" },
+  { cat: "Formação", ttl: "Cristo, sumo sacerdote", desc: "Meditações sobre o sacerdócio comum e ministerial.", img: "/images/subsidios-crucifixo.webp" },
+  { cat: "Rituais", ttl: "O Rito do Batismo", desc: "Acompanhamento e preparação para padrinhos, padres e famílias.", img: "/images/subsidios-batismo.webp" },
 ];
 
-export default function Subsidios() {
+const fallbackImgs = [
+  "/images/subsidios-missal.webp",
+  "/images/subsidios-crucifixo.webp",
+  "/images/subsidios-batismo.webp",
+];
+
+interface Props {
+  subsidios?: Subsidio[];
+}
+
+export default function Subsidios({ subsidios }: Props) {
+  const hasData = subsidios && subsidios.length > 0;
+  const display = hasData
+    ? subsidios.slice(0, 3).map((s, i) => ({
+        cat: s.titulo.split("—")[0]?.trim() || "Subsídio",
+        ttl: s.titulo.split("—")[1]?.trim() || s.titulo,
+        desc: s.descricao?.replace(/<[^>]*>/g, "").slice(0, 130) ?? "",
+        img: fallbackImgs[i % 3],
+      }))
+    : fallbackItems;
+
   return (
     <section id="subsidios" data-screen-label="Subsídios" className="sub-bg">
       <div className="wrap">
@@ -20,9 +41,9 @@ export default function Subsidios() {
         </div>
 
         <div className="sub-grid">
-          {items.map((it) => (
+          {display.map((it) => (
             <article key={it.ttl} className="sub-card">
-              {it.label === "MISSAL ABERTO" ? <img src="/images/subsidios-missal.webp" alt={it.label} className="sub-img" /> : it.label === "CRUCIFIXO" ? <img src="/images/subsidios-crucifixo.webp" alt={it.label} className="sub-img" /> : <img src="/images/subsidios-batismo.webp" alt={it.label} className="sub-img" />}
+              <img src={it.img} alt={it.ttl} className="sub-img" />
               <div className="body">
                 <div className="cat">{it.cat}</div>
                 <h3>{it.ttl}</h3>

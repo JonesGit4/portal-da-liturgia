@@ -1,3 +1,4 @@
+import type { Evento } from "@/lib/directus";
 import { Icon } from "./icons";
 
 const rdgs = [
@@ -6,7 +7,11 @@ const rdgs = [
   { ix: "III", lbl: "Evangelho", ref: "Marcos 12, 13-17", ttl: "Dai a César o que é de César" },
 ];
 
-export default function Liturgia() {
+interface Props {
+  eventos?: Evento[];
+}
+
+export default function Liturgia({ eventos }: Props) {
   return (
     <section id="liturgia" data-screen-label="Liturgia Diária" className="lit-bg">
       <div className="wrap">
