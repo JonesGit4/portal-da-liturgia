@@ -29,7 +29,7 @@ export default function Oracoes() {
 
         <div className="pray-list">
           {items.map((it) => (
-            <button key={it.ttl} className="pray-item">
+            <button key={it.ttl} className="pray-item" aria-label={it.ttl}>
               <span className="num">{it.n}</span>
               <span className="body">
                 <b>{it.ttl}</b>
@@ -40,7 +40,7 @@ export default function Oracoes() {
               </span>
             </button>
           ))}
-          <button className="pray-item all">
+          <button className="pray-item all" aria-label="Todas as orações">
             <span className="num">∞</span>
             <span className="body">
               <b>Todas as orações</b>

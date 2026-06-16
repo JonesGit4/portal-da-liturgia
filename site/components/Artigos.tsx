@@ -32,7 +32,7 @@ export default function Artigos() {
         <div className="art-grid">
           {arts.map((a, i) => (
             <article key={i} className="art">
-              <div className="ph" data-label={a.label} />
+              <div className="ph" role="img" aria-label={a.label} data-label={a.label} />
               <div className="cat">{a.cat}</div>
               <h3>{a.ttl}</h3>
               <p>{a.desc}</p>

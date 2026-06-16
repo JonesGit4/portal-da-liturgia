@@ -40,6 +40,16 @@ button { font: inherit; cursor: pointer; }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
+html {
+  touch-action: manipulation;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice-track { animation: none !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
 /* === Red dot marquee details === */
 .dot-rule {
   height: 6px;

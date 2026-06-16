@@ -28,21 +28,21 @@ export default function Musica() {
 
         <div className="music-grid">
           <div className="music-card feat">
-            <div className="ph" data-label="CRUCIFICAÇÃO • obra-prima" />
+            <div className="ph" role="img" aria-label="CRUCIFICAÇÃO • obra-prima" data-label="CRUCIFICAÇÃO • obra-prima" />
             <div className="cat">{cards[0].cat}</div>
             <h3>{cards[0].ttl}</h3>
             <p>{cards[0].desc}</p>
           </div>
 
           <div className="music-card">
-            <div className="ph" data-label="CORO" />
+            <div className="ph" role="img" aria-label="CORO" data-label="CORO" />
             <div className="cat">{cards[1].cat}</div>
             <h3>{cards[1].ttl}</h3>
             <p>{cards[1].desc}</p>
           </div>
 
           <div className="music-card">
-            <div className="ph" data-label="MANUSCRITO" />
+            <div className="ph" role="img" aria-label="MANUSCRITO" data-label="MANUSCRITO" />
             <div className="cat">{cards[2].cat}</div>
             <h3>{cards[2].ttl}</h3>
             <p>{cards[2].desc}</p>

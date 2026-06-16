@@ -5,8 +5,8 @@ export default function Video() {
     <section id="video" data-screen-label="Vídeo">
       <div className="wrap vid-wrap">
         <div className="vid-player">
-          <div className="ph dark" data-label="THUMBNAIL • homilia da semana" />
-          <div className="play" />
+          <div className="ph dark" data-label="THUMBNAIL • homilia da semana" role="img" aria-label="Thumbnail do vídeo da homilia da semana" />
+          <div className="play" aria-hidden="true" />
         </div>
         <div className="vid-meta">
           <div className="yt">YouTube · Portal da Liturgia</div>
@@ -18,7 +18,7 @@ export default function Video() {
           <a className="btn btn-primary" href="#">
             Inscrever-se <Icon.ArrowRight />
           </a>
-          <div className="vid-stats">
+          <div className="vid-stats" style={{ fontVariantNumeric: "tabular-nums" } as React.CSSProperties}>
             <div className="stat">
               <div className="n">128k</div>
               <div className="l">Inscritos</div>

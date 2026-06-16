@@ -22,7 +22,7 @@ export default function Subsidios() {
         <div className="sub-grid">
           {items.map((it) => (
             <article key={it.ttl} className="sub-card">
-              <div className="ph" data-label={it.label} />
+              <div className="ph" role="img" aria-label={it.label} data-label={it.label} />
               <div className="body">
                 <div className="cat">{it.cat}</div>
                 <h3>{it.ttl}</h3>
