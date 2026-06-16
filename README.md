@@ -2,7 +2,7 @@
 
 **Cliente:** Maciel José da Silva (Pe. Maciel)
 **Contrato:** Documenso #25 · Setup R$1.000 · Mensal R$500 (6 parcelas) · Total R$4.000
-**Status:** Ativo — contrato assinado, setup pago, novo site a iniciar
+**Status:** Staging — aguardando imagens reais + propagação DNS
 
 ---
 
@@ -11,81 +11,80 @@
 | Recurso | URL |
 |----------|-----|
 | Site atual (legado) | https://portaldaliturgia.com |
-| API Backend | https://portal-da-liturgia-back.vercel.app |
-| Domínio | `portaldaliturgia.com` (HostGator + Cloudflare) |
-| Google Drive | `CLIENTES_DUOBRO/Portal da Liturgia/` |
-| Kanban | GitHub Project "Duobro Dashboard" |
+| Staging (Vercel) | https://portal-da-liturgia-ttz0s5lor-joneslab-projects.vercel.app |
+| Domínio novo | `portaldaliturgia.com.br` (zona CF criada, NS trocados, aguardando propagação) |
+| Repo GitHub | [JonesGit4/portal-da-liturgia](https://github.com/JonesGit4/portal-da-liturgia) |
+| Vercel Project | `prj_OWHejbRQ866fJwKfssXUdLoiNk0I` (joneslab-projects) |
+| Cloudflare Zone | `2a80dceb1288acb3962069c1b6b1a7d6` |
+| PostgreSQL | manager1, DB `portal_da_liturgia` (1.527 registros) |
 
 ---
 
-## 📋 Stack Atual (site legado)
+## 📋 Stack
 
-- **Frontend:** React CRA (Client-Side Rendering) — hospedado na HostGator
-- **CDN/DNS:** Cloudflare (`hadlee.ns.cloudflare.com` / `shane.ns.cloudflare.com`)
-- **Backend:** API REST pública em `portal-da-liturgia-back.vercel.app` (Vercel)
-- **Domínio:** Registrado em 27/05/2024, expira 27/05/2027 (PDR Ltd. / HostGator Brasil)
-- **Email:** `mail.portaldaliturgia.com` (HostGator, IP 108.179.252.244)
-
-### Endpoints da API (legado)
-
-| Endpoint | Conteúdo |
-|----------|----------|
-| `GET /get-musicas` | 491 músicas litúrgicas |
-| `GET /get-all-artigos` | 38 artigos |
-| `GET /get-oracoes` | 271 orações |
-| `GET /get-missas` | Eventos litúrgicos |
-| `GET /get-subsidios` | 210 subsídios |
-| `GET /get-tipos-oracoes` | 31 categorias |
+- **Framework:** Next.js 16.2 + React 18
+- **Estilo:** CSS vanilla com tokens OKLCH (sem Tailwind)
+- **Fontes:** Cormorant Garamond + Hanken Grotesk + JetBrains Mono (`next/font/google`)
+- **Hospedagem:** Vercel (SSG)
+- **DNS:** Cloudflare (proxy ativo)
+- **Dados:** PostgreSQL no manager1 (8 tabelas, FTS português)
 
 ---
 
-## 👤 Cliente
+## 🎨 Design System
 
-- **Nome:** Maciel José da Silva (Pe. Maciel)
-- **CPF:** 995.149.154-53
-- **RG:** 50.031.876-1
-- **WhatsApp:** +55 27 99888-8738
-- **Site:** portaldaliturgia.com
-- **Email:** ⚠️ Não confirmado (placeholder `maciel@portaldaliturgia.com`)
-- **Endereço/CEP:** ⚠️ Não consta nos documentos
+| Token | Valor |
+|-------|-------|
+| Background | oklch(0.985 0.005 60) ≈ #FCFAF5 |
+| Accent | oklch(0.5 0.21 27) ≈ #8B1A2B (vermelho litúrgico) |
+| Gold | oklch(0.62 0.10 75) ≈ #B8934A |
+| Display font | Cormorant Garamond (400-600) |
+| Body font | Hanken Grotesk (300-700) |
+| Dot rules | Assinatura visual — separadores com bolinhas vermelhas |
 
 ---
 
-## 📂 Estrutura do Repo
+## ✅ Auditorias Concluídas
+
+| Skill | Data | Resultado |
+|-------|------|-----------|
+| `hallmark-enxuta` (anti-slop) | 16/06 | 🔥0 ⚠️0 — limpo |
+| `web-design-review` (a11y/UX) | 16/06 | 7 fixes aplicados |
+| `landing-page-design-review` (visual) | 16/06 | 45/50 🟢 |
+
+---
+
+## 🔜 Pendências
+
+- [ ] Substituir 8 placeholders por imagens reais (Pexels)
+- [ ] Aguardar propagação DNS Cloudflare (~1-24h)
+- [ ] Lighthouse audit pós-imagens
+- [ ] Criar ~15 issues de staging (SEO, performance, a11y)
+- [ ] Confirmar métricas YouTube com cliente
+- [ ] Aprovação do cliente para go-live
+
+---
+
+## 📂 Estrutura
 
 ```
-portal-da-liturgia/
-├── README.md                          ← Este arquivo
-├── docs/
-│   ├── contrato.md                    ← Detalhes do contrato
-│   ├── dominio.md                     ← Investigação de domínio/hospedagem
-│   └── levantamentos/
-│       ├── README.md                  ← Índice de auditorias
-│       ├── 2026-05-07-seo-audit.md    ← Auditoria SEO inicial
-│       ├── 2026-05-13-baseline.md     ← Marco zero (baseline)
-│       └── 2026-05-29-dominio.md      ← Investigação whois/DNS
-├── site/                              ← 🆕 NOVO SITE (a iniciar)
-│   └── README.md
-└── .gitignore
+site/
+├── app/
+│   ├── globals.css         ← Design system completo (615 linhas, OKLCH)
+│   ├── layout.tsx           ← Metadata, JSON-LD, skip-link, next/font
+│   ├── page.tsx             ← Composição das 9 seções
+│   ├── robots.ts            ← robots.txt dinâmico
+│   └── sitemap.ts           ← sitemap.xml dinâmico
+└── components/
+    ├── Header.tsx           ← Sticky, nav 6 links, brand mark
+    ├── NoticeMarquee.tsx    ← Ticker vermelho
+    ├── Hero.tsx             ← Split layout, headline + badge
+    ├── Musica.tsx           ← Grid 4-col com featured card
+    ├── Oracoes.tsx          ← Quote sticky + grid 2-col
+    ├── Liturgia.tsx         ← Card + leituras do dia
+    ├── Video.tsx            ← Player + stats YouTube
+    ├── Subsidios.tsx        ← Grid 3 cards
+    ├── Artigos.tsx          ← Grid 12-col assimétrico
+    ├── Footer.tsx           ← Dark, 4 colunas, links IVE
+    └── icons.tsx            ← SVG icons (Search, ArrowRight, Calendar, etc.)
 ```
-
----
-
-## ⚠️ Problemas Conhecidos (site legado)
-
-1. **CSR puro** — HTML é `<div id="root"></div>`, conteúdo invisível para crawlers
-2. **Meta description:** "Web site created using create-react-app"
-3. **`lang="en"`** em site 100% português
-4. **Sitemap congelado** — lastmod 04/02/2025
-5. **Zero schema markup** — sem JSON-LD, sem OG tags
-6. **Robots.txt** não referencia sitemap, não libera bots IA
-
----
-
-## 🔜 Próximos Passos
-
-- [ ] Iniciar desenvolvimento do novo site
-- [ ] Migrar de React CRA para Next.js (SSG/SSR)
-- [ ] Implementar SEO completo (schema, sitemap dinâmico, meta tags)
-- [ ] Obter email e endereço do Pe. Maciel
-- [ ] Configurar GTM/GA4 no novo site

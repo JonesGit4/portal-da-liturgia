@@ -27,7 +27,7 @@ export default function Liturgia() {
 
         <div className="lit-grid">
           <article className="lit-card">
-            <div className="ph" role="img" aria-label="MISSAL ABERTO" data-label="MISSAL ABERTO" />
+            <img src="/images/liturgia-missal.jpg" alt="Missal católico aberto" className="lit-img" />
             <div className="body">
               <div className="saint">São Filipe Néri · Memória</div>
               <h3>&ldquo;Dai a César o que é de César, e a Deus o que é de Deus&rdquo;</h3>

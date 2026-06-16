@@ -27,7 +27,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="hero-art">
-          <div className="ph" role="img" aria-label="ELEVAÇÃO • foto principal" data-label="ELEVAÇÃO • foto principal" />
+          <img src="/images/hero-elevacao.jpg" alt="Elevação da hóstia durante a Santa Missa" className="hero-img" loading="eager" fetchPriority="high" />
           <div className="badge">
             <div className="lbl">Próxima solenidade</div>
             <div className="ttl">Santíssima Trindade</div>
