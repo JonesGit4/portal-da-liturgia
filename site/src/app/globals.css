@@ -17,6 +17,15 @@
   --accent-2: #6B1421;
   --accent-soft: rgba(139, 26, 43, 0.12);
   --gold: #B8934A;
+  /* Footer tokens */
+  --footer-bg: #25211E;
+  --footer-line: #3D3833;
+  --footer-ink: #C9C4BD;
+  --footer-ink-2: #B0ABA4;
+  --footer-ink-3: #827D76;
+  --footer-ink-dim: #A6A099;
+  --footer-link: #CCC7BF;
+  --video-bg: #2D2A26;
   --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
   --sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -105,6 +114,11 @@
 @keyframes ticker {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

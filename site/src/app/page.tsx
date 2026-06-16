@@ -267,7 +267,7 @@ export default function Home() {
       {/* === VÍDEO === */}
       <section id="video" data-od-id="video">
         <div className="wrap grid grid-cols-2 gap-[60px] items-center max-[980px]:grid-cols-1 max-[980px]:gap-[50px]">
-          <div className="relative aspect-[16/10] bg-[#2D2A26] rounded overflow-hidden cursor-pointer">
+          <div className="relative aspect-[16/10] bg-[var(--video-bg)] rounded overflow-hidden cursor-pointer">
             <div className="ph dark w-full h-full" data-label="THUMBNAIL • homilia da semana" role="img" aria-label="THUMBNAIL • homilia da semana" />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[76px] h-[76px] bg-[var(--bg)] rounded-full grid place-items-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.4)] transition-transform hover:scale-105">
               <div className="w-0 h-0 border-l-[18px] border-t-[11px] border-b-[11px] border-l-[var(--accent)] border-t-transparent border-b-transparent ml-[6px]" />
@@ -285,7 +285,7 @@ export default function Home() {
               Acompanhe nosso canal com homilias diárias, formação litúrgica, retiros e meditações guiadas em áudio e vídeo.
             </p>
             <a href="#" className="btn-primary">Inscrever-se <ArrowRight /></a>
-            <div className="flex gap-7 pt-[22px] mt-6 border-t border-[var(--line)]">
+            <div className="flex gap-7 pt-[22px] mt-6 border-t border-[var(--line)]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               <div><div className="font-[var(--serif)] text-[26px] leading-none text-[var(--ink)]">128k</div><div className="text-[11px] tracking-[0.12em] uppercase text-[var(--ink-3)] mt-1">Inscritos</div></div>
               <div><div className="font-[var(--serif)] text-[26px] leading-none text-[var(--ink)]">740+</div><div className="text-[11px] tracking-[0.12em] uppercase text-[var(--ink-3)] mt-1">Vídeos</div></div>
               <div><div className="font-[var(--serif)] text-[26px] leading-none text-[var(--ink)]">12</div><div className="text-[11px] tracking-[0.12em] uppercase text-[var(--ink-3)] mt-1">Anos no ar</div></div>
@@ -378,9 +378,9 @@ export default function Home() {
       </section>
 
       {/* === FOOTER === */}
-      <footer className="bg-[#25211E] text-[#C9C4BD] pt-20 pb-9">
+      <footer className="bg-[var(--footer-bg)] text-[var(--footer-ink)] pt-20 pb-9">
         <div className="wrap">
-          <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr] gap-[50px] pb-[60px] border-b border-[#3D3833] max-[980px]:grid-cols-2">
+          <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr] gap-[50px] pb-[60px] border-b border-[var(--footer-line)] max-[980px]:grid-cols-2">
             <div>
               <a href="#top" className="flex items-center gap-3">
                 <div className="w-8 h-8 grid place-items-center bg-[var(--bg)] text-[var(--accent)] rounded-full" aria-hidden="true">
@@ -390,47 +390,47 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col leading-[1.1]">
                   <b className="font-[var(--serif)] font-medium text-base text-[var(--bg)]">Portal da Liturgia</b>
-                  <small className="text-[9.5px] tracking-[0.16em] uppercase text-[#A6A099] mt-[2px]">Laudate Dominum</small>
+                  <small className="text-[9.5px] tracking-[0.16em] uppercase text-[var(--footer-ink-dim)] mt-[2px]">Laudate Dominum</small>
                 </div>
               </a>
-              <p className="mt-[22px] text-sm max-w-[320px] leading-[1.65] text-[#B0ABA4]">
+              <p className="mt-[22px] text-sm max-w-[320px] leading-[1.65] text-[var(--footer-ink-2)]">
                 Um portal dedicado à beleza, dignidade e formação na Sagrada Liturgia da Igreja Católica.
               </p>
             </div>
 
             <div>
-              <h5 className="font-[var(--sans)] text-[11px] tracking-[0.16em] uppercase text-[#827D76] font-semibold mb-5">Navegação</h5>
+              <h5 className="font-[var(--sans)] text-[11px] tracking-[0.16em] uppercase text-[var(--footer-ink-3)] font-semibold mb-5">Navegação</h5>
               <ul className="flex flex-col gap-[10px]">
                 {['Liturgia diária', 'Música litúrgica', 'Orações', 'Artigos', 'Subsídios'].map(l => (
-                  <li key={l}><a href="#" className="text-sm text-[#CCC7BF] hover:text-white transition">{l}</a></li>
+                  <li key={l}><a href="#" className="text-sm text-[var(--footer-link)] hover:text-white transition">{l}</a></li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h5 className="font-[var(--sans)] text-[11px] tracking-[0.16em] uppercase text-[#827D76] font-semibold mb-5">Links úteis</h5>
+              <h5 className="font-[var(--sans)] text-[11px] tracking-[0.16em] uppercase text-[var(--footer-ink-3)] font-semibold mb-5">Links úteis</h5>
               <ul className="flex flex-col gap-[10px]">
                 {['Instituto Verbo Encarnado', 'Editora Verbo Encarnado', 'Exercícios Espirituais', 'Voz Católica', 'O Teólogo Responde'].map(l => (
-                  <li key={l}><a href="#" className="text-sm text-[#CCC7BF] hover:text-white transition">{l}</a></li>
+                  <li key={l}><a href="#" className="text-sm text-[var(--footer-link)] hover:text-white transition">{l}</a></li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h5 className="font-[var(--sans)] text-[11px] tracking-[0.16em] uppercase text-[#827D76] font-semibold mb-5">Contato</h5>
+              <h5 className="font-[var(--sans)] text-[11px] tracking-[0.16em] uppercase text-[var(--footer-ink-3)] font-semibold mb-5">Contato</h5>
               <ul className="flex flex-col gap-[10px]">
-                <li><a href="mailto:liturgia@vebmail.com" className="text-sm text-[#CCC7BF] hover:text-white transition">liturgia@vebmail.com</a></li>
-                <li><a href="#" className="text-sm text-[#CCC7BF] hover:text-white transition">Newsletter semanal</a></li>
-                <li><a href="#" className="text-sm text-[#CCC7BF] hover:text-white transition">Sugestões e correções</a></li>
+                <li><a href="mailto:liturgia@vebmail.com" className="text-sm text-[var(--footer-link)] hover:text-white transition">liturgia@vebmail.com</a></li>
+                <li><a href="#" className="text-sm text-[var(--footer-link)] hover:text-white transition">Newsletter semanal</a></li>
+                <li><a href="#" className="text-sm text-[var(--footer-link)] hover:text-white transition">Sugestões e correções</a></li>
               </ul>
             </div>
           </div>
 
-          <div className="flex items-center justify-between mt-[26px] text-xs text-[#827D76]">
+          <div className="flex items-center justify-between mt-[26px] text-xs text-[var(--footer-ink-3)]">
             <span>© 2026 Portal da Liturgia · Todos os direitos reservados</span>
             <div className="flex gap-[10px]">
               {['Facebook', 'Instagram', 'YouTube'].map(s => (
-                <a key={s} href="#" className="w-9 h-9 grid place-items-center border border-[#3D3833] rounded-full text-[#C9C4BD] hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] transition" aria-label={s}>
+                <a key={s} href="#" className="w-9 h-9 grid place-items-center border border-[var(--footer-line)] rounded-full text-[var(--footer-ink)] hover:bg-[var(--accent)] hover:text-white hover:border-[var(--accent)] transition" aria-label={s}>
                   <SocialIcon name={s} />
                 </a>
               ))}
