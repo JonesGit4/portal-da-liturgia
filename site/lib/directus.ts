@@ -85,7 +85,8 @@ async function fetchDirectus<T>(
   });
 
   if (!res.ok) {
-    throw new Error(`Directus ${collection} failed: ${res.status}`);
+    console.error(`Directus ${collection} failed: ${res.status} — falling back to empty`);
+    return { data: [] };
   }
 
   return res.json();
