@@ -60,3 +60,13 @@
 - [ ] 8.2 Verificar performance (Lighthouse pós-integração)
 - [ ] 8.3 Verificar SEO (meta tags nos dados dinâmicos)
 - [ ] 8.4 Backup do PostgreSQL antes de liberar acesso ao cliente
+
+## Fase 9: Documento para o Cliente
+
+- [ ] 9.1 Criar PDF/MD "Guia do Editor — Portal da Liturgia" passo a passo para leigo
+- [ ] 9.2 Conteúdo: como acessar o painel (admin.portaldaliturgia.com.br)
+- [ ] 9.3 Conteúdo: como criar/editar artigo, música, oração, subsídio
+- [ ] 9.4 Conteúdo: como publicar (status draft → published)
+- [ ] 9.5 Conteúdo: como ver o resultado no site
+- [ ] 9.6 Conteúdo: o que NÃO fazer (deletar collections, mexer em schema)
+- [ ] 9.7 Enviar documento via WhatsApp para Pe. Maciel (+55 27 99888-8738)
