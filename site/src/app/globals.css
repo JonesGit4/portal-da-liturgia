@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FCFAF5;
+  --bg-2: #F5F2EB;
+  --bg-3: #EBE6DA;
+  --ink: #2D2A26;
+  --ink-2: #5C5750;
+  --ink-3: #8A857D;
+  --line: #D9D3C7;
+  --line-2: #E5DFD5;
+  --accent: #8B1A2B;
+  --accent-2: #6B1421;
+  --accent-soft: rgba(139, 26, 43, 0.12);
+  --gold: #B8934A;
+  --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --maxw: 1240px;
+  --gut: clamp(20px, 4vw, 56px);
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 { 
+    font-family: var(--serif); 
+    font-weight: 500; 
+    letter-spacing: -0.01em; 
+  }
+
+  ::selection { 
+    background: var(--accent); 
+    color: var(--bg); 
+  }
+}
+
+@layer components {
+  .dot-rule {
+    height: 6px;
+    background-image: radial-gradient(circle, var(--accent) 1.4px, transparent 1.8px);
+    background-size: 14px 6px;
+    background-repeat: repeat-x;
+    background-position: center;
+    border: 0;
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--gut);
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-size: 13.5px; font-weight: 500;
+    letter-spacing: 0.005em;
+    background: var(--ink);
+    color: var(--bg);
+    border: 1px solid transparent;
+    transition: background .15s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-size: 13.5px; font-weight: 500;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: transparent;
+    transition: background .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--bg-2); border-color: var(--ink-3); }
+}

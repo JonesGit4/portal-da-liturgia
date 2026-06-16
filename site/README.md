@@ -1,29 +1,36 @@
-# 🆕 Novo Site — Portal da Liturgia
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> **A desenvolver.** Este diretório conterá o código do novo site.
+## Getting Started
 
-## Stack prevista
+First, run the development server:
 
-- **Framework:** Next.js (SSG/SSR) — substituindo React CRA legado
-- **Estilo:** Tailwind CSS
-- **Hospedagem:** Vercel
-- **Domínio:** `portaldaliturgia.com` (manter Cloudflare)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Requisitos
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [ ] Renderização server-side (SSG para páginas de conteúdo, SSR para dinâmicas)
-- [ ] SEO completo: meta tags, schema JSON-LD (Article, MusicComposition, WebSite)
-- [ ] Sitemap dinâmico
-- [ ] `/llms.txt` para bots de IA
-- [ ] OG tags completas
-- [ ] Core Web Vitals otimizados
-- [ ] Integração com API backend existente ou migração dos dados
-- [ ] GTM/GA4
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Dados a migrar
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- 491 músicas litúrgicas (com cifras, YouTube, partituras)
-- 271 orações (PT + Latim)
-- 38 artigos
-- 210 subsídios
-- Dados de missas por domingo litúrgico
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
