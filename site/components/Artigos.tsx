@@ -1,5 +1,15 @@
 import { Icon } from "./icons";
 
+const labelToImg: Record<string, string> = {
+  EUCARISTIA: "/images/artigo-eucaristia.webp",
+  CANTO: "/images/artigo-canto-gloria.webp",
+  CALENDÁRIO: "/images/artigo-dias-preceito.webp",
+  SACERDOTE: "/images/artigo-sacerdote.webp",
+  NÚPCIAS: "/images/artigo-matrimonio.webp",
+  ESCRITURA: "/images/artigo-lectio.webp",
+  ALTAR: "/images/artigo-altar.webp",
+};
+
 const arts = [
   { cat: "Espiritualidade", ttl: "A luta do demônio contra a matéria da Eucaristia", desc: "Tema tratado pelo Beato Clemente Marchisio no Congresso Eucarístico de Turim, 1894 — combate aos sacrilégios e uso indevido da matéria.", date: "14 mai 2026", read: "8 min", label: "EUCARISTIA" },
   { cat: "Música", ttl: "O canto do Glória: legislação e estrutura", desc: "Parte integrante dos ritos iniciais da Missa.", date: "11 mai 2026", read: "5 min", label: "CANTO" },
@@ -32,7 +42,7 @@ export default function Artigos() {
         <div className="art-grid">
           {arts.map((a, i) => (
             <article key={i} className="art">
-              <div className="ph" role="img" aria-label={a.label} data-label={a.label} />
+              <img src={labelToImg[a.label]} alt={a.ttl} className="art-img" loading="lazy" />
               <div className="cat">{a.cat}</div>
               <h3>{a.ttl}</h3>
               <p>{a.desc}</p>
